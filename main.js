@@ -224,6 +224,57 @@ function init() {
         saveCode(codeEditor.value);
       }, 500);
     });
+    
+    document.getElementById('downloadBtn').addEventListener('click', () => {
+      const code = document.getElementById('codeEditor').value;
+      const blob = new Blob([code], { type: 'text/javascript' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'code.js';
+      a.click();
+      URL.revokeObjectURL(url);
+    });
+    
+    document.getElementById('downloadSessionBtn').addEventListener('click', () => {
+      const session = {
+        chatHistory: JSON.parse(localStorage.getItem('chatHistory') || '[]'),
+        code: document.getElementById('codeEditor').value
+      };
+      const blob = new Blob([JSON.stringify(session, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'session.json';
+      a.click();
+      URL.revokeObjectURL(url);
+    });
+    
+    document.getElementById('downloadCreationBtn').addEventListener('click', async () => {
+      const response = await fetch('session-ses_22a4.md');
+      const content = await response.text();
+      const blob = new Blob([content], { type: 'text/markdown' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'session-ses_22a4.md';
+      a.click();
+      URL.revokeObjectURL(url);
+    });
+    
+    document.getElementById('versionBtn').addEventListener('click', () => {
+      document.getElementById('versionDialog').classList.add('active');
+    });
+    
+    document.getElementById('closeDialogBtn').addEventListener('click', () => {
+      document.getElementById('versionDialog').classList.remove('active');
+    });
+    
+    document.getElementById('versionDialog').addEventListener('click', (e) => {
+      if (e.target.id === 'versionDialog') {
+        document.getElementById('versionDialog').classList.remove('active');
+      }
+    });
   });
 }
 
