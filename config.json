@@ -1,0 +1,6 @@
+{
+  "projectId": "aitest-492316",
+  "region": "global",
+  "endpoint": "aiplatform.googleapis.com",
+  "model": "zai-org/glm-5-maas"
+}

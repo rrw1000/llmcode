@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coding Assistant</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-container">
+    <div class="left-pane">
+      <div class="code-section">
+        <div class="section-header">
+          <h2>Code Editor</h2>
+          <button id="runBtn" class="run-btn">Run</button>
+        </div>
+        <textarea id="codeEditor" spellcheck="false"></textarea>
+      </div>
+      <div class="command-section">
+        <div class="section-header">
+          <h2>AI Assistant</h2>
+          <button id="clearChatBtn" class="clear-btn">Clear</button>
+        </div>
+        <div id="chatHistory"></div>
+        <div class="command-input">
+          <textarea id="commandInput" placeholder="Describe the code you want to write..."></textarea>
+          <button id="sendBtn">Send</button>
+        </div>
+      </div>
+    </div>
+    <div class="right-pane">
+      <div class="section-header">
+        <h2>Preview</h2>
+        <button id="clearPreviewBtn" class="clear-btn">Clear</button>
+      </div>
+      <iframe id="preview" sandbox="allow-scripts allow-modals allow-forms allow-popups"></iframe>
+    </div>
+  </div>
+  <div id="loadingOverlay" class="loading-overlay">
+    <div class="spinner"></div>
+    <p>Generating code...</p>
+  </div>
+  <script src="main.js"></script>
+</body>
+</html>
