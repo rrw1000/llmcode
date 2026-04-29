@@ -217,6 +217,19 @@ function init() {
       preview.srcdoc = '<html><body></body></html>';
     });
     
+    document.getElementById('resetBtn').addEventListener('click', () => {
+      localStorage.removeItem('codeEditorContent');
+      localStorage.removeItem('chatHistory');
+      document.getElementById('codeEditor').value = getDefaultCode();
+      document.getElementById('chatHistory').innerHTML = '';
+      runCode();
+    });
+    
+    document.getElementById('logoutBtn').addEventListener('click', () => {
+      localStorage.removeItem('gcApiKey');
+      window.location.href = 'index.html';
+    });
+    
     let saveTimeout;
     codeEditor.addEventListener('input', () => {
       clearTimeout(saveTimeout);
